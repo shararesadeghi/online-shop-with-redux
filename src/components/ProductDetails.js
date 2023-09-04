@@ -1,7 +1,6 @@
-import React,{useContext} from 'react';
+import React from 'react';
 import { Link, useParams } from 'react-router-dom';
-//context
-import { ProductsContext } from '../context/ProductContextProvider';
+import { useSelector } from 'react-redux';
 //css
 import styles from '../components/ProductDetails.module.css';
 
@@ -11,7 +10,7 @@ const ProductDetails = (props) => {
     const params = useParams();
     const id = params.id;
    // const id = props.match.params.id;
-    const data = useContext(ProductsContext);
+    const data = useSelector(state=>state.productsState);
     const product = data[id - 1];
     const {image,title,description, price,category} = product;
 
